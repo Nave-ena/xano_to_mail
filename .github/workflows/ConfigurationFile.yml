@@ -17,7 +17,7 @@ jobs:
         run: pip install requests
       - name: Send email
         env:
-          USER_EMAIL: ${{ secrets.USER_EMAIL }}
-          USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
-          RECEIVER: ${{ secrets.RECEIVER }}
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
+        
         run: python mail.py
