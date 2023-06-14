@@ -13,15 +13,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
+          ref: v2 # Add this line to ensure Node.js 16 is used
           path: '.'
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          python-version: 3.x
+          node-version: 16
 
       - name: Install dependencies
-        run: pip install requests
+        run: npm install
 
       - name: Run Python script
         run: python email_name_from_db.py
@@ -31,7 +32,6 @@ jobs:
           SMTP_PORT: 587
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
           SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
-          
+
       - name: Send email
         run: python mail.py
-
