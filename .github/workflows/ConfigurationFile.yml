@@ -1,1 +1,32 @@
+name: Send Email
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # daily at midN8
+
+jobs:
+  send_email:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run Python script
+        run: python email_name_from_db.py
+        env:
+          ENDPOINT_URL: 'https://x8ki-letl-twmt.n7.xano.io/api:5OydBuyZ/unread_user'
+          SMTP_SERVER: 'smtp.gmail.com'
+          SMTP_PORT: 587
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
+
 
