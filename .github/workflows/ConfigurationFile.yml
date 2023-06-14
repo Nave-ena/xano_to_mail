@@ -1,23 +1,23 @@
-name: email_sending
+#name: email_sending
 
-on:
-  schedule:
-    - cron: "*/5 * * * *"
-  workflow_dispatch:
+#on:
+#  schedule:
+ #   - cron: "*/0 * * * *"
+#  workflow_dispatch:
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        with:
-          python-version: 3.x
-      - name: Install dependencies
-        run: pip install requests
-      - name: Send email
-        env:
-          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
-          SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
-        
-        run: python mail.py
+#jobs:
+ # build:
+#    runs-on: ubuntu-latest
+ #   steps:
+ #     - uses: actions/checkout@v2
+ #     - uses: actions/setup-python@v2
+ #       with:
+ #         python-version: 3.x
+  #    - name: Install dependencies
+   #     run: pip install requests
+ #     - name: Send email
+#        env:
+ #         SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+ #         SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
+ #       
+  #      run: python mail.py
