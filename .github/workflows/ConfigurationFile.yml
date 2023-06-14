@@ -1,10 +1,13 @@
-name: Send Email
+name: email_sending
 
 on:
   schedule:
-    - cron: '*/2 * * * *' 
+    - cron: "*/2 * * * *"
+
+  workflow_dispatch:
 
 jobs:
+  
   send_email:
     runs-on: ubuntu-latest
 
@@ -22,11 +25,11 @@ jobs:
 
       - name: Run Python script
         run: python email_name_from_db.py
+      - name: Send email
         env:
-          ENDPOINT_URL: 'https://x8ki-letl-twmt.n7.xano.io/api:5OydBuyZ/unread_user'
+          ENDPOINT_URL: 'https://api.xano.com/api/your-endpoint-url'
           SMTP_SERVER: 'smtp.gmail.com'
           SMTP_PORT: 587
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
           SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
-
-
+        run: python mail.py
