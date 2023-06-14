@@ -8,7 +8,7 @@ ENDPOINT_URL = 'https://x8ki-letl-twmt.n7.xano.io/api:5OydBuyZ/unread_user'
 SMTP_SERVER = 'smtp.gmail.com'
 SMTP_PORT = 587
 SENDER_EMAIL = os.environ.get("SENDER_EMAIL") 
-SENDER_PASSWORD = os.environ.get("USER_PASSWORD")
+SENDER_PASSWORD = os.environ.get("SENDER_PASSWORD")
 
 try:
     response = requests.get(ENDPOINT_URL)
