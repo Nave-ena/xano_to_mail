@@ -2,7 +2,7 @@ name: Send Email
 
 on:
   schedule:
-    - cron: '0 0 * * *' # daily at midN8
+    - cron: '*/2 * * * *' 
 
 jobs:
   send_email:
