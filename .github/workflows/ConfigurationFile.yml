@@ -3,34 +3,20 @@ name: email_sending
 on:
   schedule:
     - cron: "*/5 * * * *"
+
   workflow_dispatch:
 
 jobs:
-  send_email:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
         with:
-          ref: v2 
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 16
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run Python script
-        run: python email_name_from_db.py
+          python-version: 3.x
+      - name: Send email
         env:
-          ENDPOINT_URL: 'https://x8ki-letl-twmt.n7.xano.io/api:5OydBuyZ/unread_user'
-          SMTP_SERVER: 'smtp.gmail.com'
-          SMTP_PORT: 587
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
           SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
-
-      - name: Send email
+       
         run: python mail.py
