@@ -20,4 +20,4 @@ jobs:
           USER_EMAIL: ${{ secrets.USER_EMAIL }}
           USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
           RECEIVER: ${{ secrets.RECEIVER }}
-        run: python mm.py
+        run: python mail.py
