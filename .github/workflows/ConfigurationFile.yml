@@ -27,7 +27,7 @@ jobs:
         run: python email_name_from_db.py
       - name: Send email
         env:
-          ENDPOINT_URL: 'https://api.xano.com/api/your-endpoint-url'
+          ENDPOINT_URL: 'https://x8ki-letl-twmt.n7.xano.io/api:5OydBuyZ/unread_user'
           SMTP_SERVER: 'smtp.gmail.com'
           SMTP_PORT: 587
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
